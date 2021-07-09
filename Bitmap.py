@@ -3,6 +3,9 @@ import numpy as np
 
 class Bitmap:
     def __init__(self, bitmapPath):
+        """
+        Tham số khởi tạo là đường dẫn của file .bmp
+        """
         self.bitmapPath = bitmapPath
 
     def __openBitmap(self):
@@ -10,7 +13,16 @@ class Bitmap:
         bitmapArray = np.asarray(bitmap)
         return bitmapArray
         
-    def asArray(self):
+    def toArray(self):
+        """
+        Phương thức này trả về ma trận màu Pixel
+
+        Return:
+               arr: ma trận số
+        Rtype:
+              numpy array
+        """
+
         bitmapArray = self.__openBitmap()
 
         row = len(bitmapArray)
