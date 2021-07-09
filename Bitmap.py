@@ -1,10 +1,9 @@
-from os import name
 from PIL import Image
 import numpy as np
 
-class Bitmap():
-    def __init__(self, __bitmapPath):
-        self.bitmapPath = __bitmapPath
+class Bitmap:
+    def __init__(self, bitmapPath):
+        self.bitmapPath = bitmapPath
 
     def __openBitmap(self):
         bitmap = Image.open(self.bitmapPath)
@@ -22,9 +21,3 @@ class Bitmap():
                 arr[i][j] = int(bitmapArray[i][j][0])
 
         return arr
-
-
-
-if __name__ == "__main__":
-    bitmap = Bitmap("Bitmap/test_case_4x4.bmp")
-    print(bitmap.asArray())
