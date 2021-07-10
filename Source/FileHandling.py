@@ -1,12 +1,15 @@
 from Coordinate import Coordinate
 
 class FileHandling:
+
+    ############################# Constructor #############################
     def __init__(self, filePath):
         """
         Tham số khởi tạo là đường dẫn của file .txt
         """
         self.filePath = filePath
 
+    ############################# Methods #############################
     def readData(self):
         """
         Phương thức này trả về toạ độ Start, Goal và tham số m
