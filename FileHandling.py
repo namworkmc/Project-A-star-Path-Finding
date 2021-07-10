@@ -1,4 +1,4 @@
-from Coordinates import Coordinates
+from Coordinate import Coordinate
 
 class FileHandling:
     def __init__(self, filePath):
@@ -16,7 +16,7 @@ class FileHandling:
                 goalXY: toạ độ Goal
                 m: tham số m
 
-        Rtypes: Coordinates, int
+        Rtypes: Coordinate, int
         """
         
         file = open(self.filePath, "r")
@@ -31,7 +31,7 @@ class FileHandling:
             temp = temp.replace(")", "")
             temp = temp.replace("\n", "")
             start = temp.split(";")
-            startXY = Coordinates(int(start[0]), int(start[1]))
+            startXY = Coordinate(int(start[0]), int(start[1]))
 
 
             # toạ độ Goal #
@@ -41,7 +41,7 @@ class FileHandling:
             temp = temp.replace(")", "")
             temp = temp.replace("\n", "")
             goal = temp.split(";")
-            goalXY = Coordinates(int(goal[0]), int(goal[1]))
+            goalXY = Coordinate(int(goal[0]), int(goal[1]))
             
 
             # tham số m #

@@ -1,5 +1,4 @@
-class Coordinates:
-
+class Coordinate:
     x = 0
     y = 0
 
@@ -10,7 +9,7 @@ class Coordinates:
         self.x = x
         self.y = y
 
-    def getCoordinates(self):
+    def getCoordinate(self):
         """
         Phương thức trả về toạ độ x và toạ độ y
 

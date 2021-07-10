@@ -1,5 +1,7 @@
+from typing import Sequence
 from PIL import Image
 import numpy as np
+from Coordinate import Coordinate
 
 class Bitmap:
     def __init__(self, bitmapPath):
@@ -11,6 +13,8 @@ class Bitmap:
     def __openBitmap(self):
         bitmap = Image.open(self.bitmapPath)
         bitmapArray = np.asarray(bitmap)
+        bitmap.close()
+
         return bitmapArray
         
     def toArray(self):
@@ -34,3 +38,21 @@ class Bitmap:
                 arr[i][j] = int(bitmapArray[i][j][0])
 
         return arr
+
+    def changeColorOfPixel(self, saveBitmapPath: str, coordinates: Coordinate):
+        """
+        Đổi màu từng pixel dựa trên coordinate
+        Param:
+                saveBitmapPath: vị trí và tên file lưu
+                coordinates: list toạ độ x, y
+        """
+        bitmap = Image.open(self.bitmapPath)
+
+        # Khởi tạo màu: cam #
+        RGB = (250, 130, 45)
+
+        for i in range(len(coordinates)):
+            x, y = coordinates[i].getCoordinate()
+            bitmap.putpixel((x, y), RGB)
+
+        bitmap.save(saveBitmapPath)
