@@ -34,7 +34,7 @@ class FileHandling:
             temp = temp.replace(")", "")
             temp = temp.replace("\n", "")
             start = temp.split(";")
-            startXY = Coordinate(int(start[0]), int(start[1]))
+            startXY = Coordinate(int(start[1]), int(start[0]))
 
 
             # toạ độ Goal #
@@ -44,7 +44,7 @@ class FileHandling:
             temp = temp.replace(")", "")
             temp = temp.replace("\n", "")
             goal = temp.split(";")
-            goalXY = Coordinate(int(goal[0]), int(goal[1]))
+            goalXY = Coordinate(int(goal[1]), int(goal[0]))
             
 
             # tham số m #

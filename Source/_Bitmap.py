@@ -42,7 +42,7 @@ class Bitmap:
         """
         return len(self.__bitmapArray[0])
         
-    def changeColorOfPixel(self, saveBitmapPath: str, coordinates: Coordinate):
+    def changeColorOfPixel(self, saveBitmapPath: str, coordinates):
         """
         Đổi màu từng pixel dựa trên coordinate
         Param:
@@ -50,13 +50,13 @@ class Bitmap:
                 coordinates: list toạ độ x, y
         """
         bitmap = Image.open(self.bitmapPath)
-
+        
         # Khởi tạo màu: cam #
         RGB = (250, 130, 45)
 
         for i in range(len(coordinates)):
-            x, y = coordinates[i].getCoordinate()
-            bitmap.putpixel((x, y), RGB)
+            x, y = coordinates[i].x, coordinates[i].y
+            bitmap.putpixel((y, x), RGB)
 
         bitmap.show()
         bitmap.save(saveBitmapPath)
