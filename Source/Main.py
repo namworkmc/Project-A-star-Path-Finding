@@ -1,4 +1,4 @@
-from Source.Astar import start
+import Astar
 
 if __name__ == "__main__":
-    start()
+    Astar.start()

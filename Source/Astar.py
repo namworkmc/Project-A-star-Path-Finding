@@ -1,5 +1,8 @@
 import numpy as np
+import math
 import sympy
+import time
+
 from Coordinate import Coordinate
 from FileHandling import FileHandling
 from _Bitmap import Bitmap
@@ -26,34 +29,58 @@ def getSuccessor(bitmapArray, row, col, G_Score, current, visited, visitor, m):
     return Successor, visitor
 
 
-def heuristicManhattan(firstCoordinate: Coordinate, secondCoordinate: Coordinate, m: int) -> float:
-    k = abs(m - (abs(firstCoordinate.x - secondCoordinate.x) +
-            abs(firstCoordinate.y - secondCoordinate.y)))
-    while not sympy.isprime(k):
-        k += 1
+def heuristic(firstCoordinate: Coordinate, secondCoordinate: Coordinate, m: int, index: int) -> float:
+    if(index == 1):
+        ## Manhattan ##
+        return abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y)
+    elif(index == 2):
+        ## Euclid ##
+        return math.sqrt((firstCoordinate.x - secondCoordinate.x) ** 2 + (firstCoordinate.y - secondCoordinate.y) ** 2)
+    elif(index == 3):
+        ##  ##
+        return 0
+    elif(index == 4):
+        ## Custom Manhattan ##
+        k = abs(m - (abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y)))
+        while not sympy.isprime(k):
+            k += 1
 
-    # return abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y) + k
-    return abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y)
+        return abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y) + k
+    elif(index == 5):
+        k = abs(m - (abs(firstCoordinate.x - secondCoordinate.x) + abs(firstCoordinate.y - secondCoordinate.y)))
+        while not sympy.isprime(k):
+            k += 1
+
+        return math.sqrt(abs((firstCoordinate.x - secondCoordinate.x) * 2 + (firstCoordinate.y - secondCoordinate.y) * 2)) + k
 
 
-def Astar(bitmapArray: np.ndarray, start, goal, m):
+
+def Astar(bitmapArray: np.ndarray, start, goal, m, index_heuristic):
+    """
+    index = 1: Manhattan
+    index = 2: Euclid
+    index = 3: dont know
+    index = 4: Custom Manhattan
+    index = 5: Custom Euclid
+    """
+
     row = len(bitmapArray)
     col = len(bitmapArray[0])
+
     count = 0
-
-    visited = [[0 for _ in range(row)] for _ in range(col)]
-
     open_lst = PriorityQueue()
-    open_lst.put((heuristicManhattan(start, goal, m), count, start))
+    open_lst.put((heuristic(start, goal, m, index_heuristic), count, start))
     count += 1
 
-    G_Score = [[np.inf for _ in range(row)] for _ in range(col)]
+    G_Score = [[np.inf for _ in range(col)] for _ in range(row)]
     G_Score[start.x][start.y] = 0
+    visited = [[0 for _ in range(col)] for _ in range(row)]
     visited[start.x][start.y] = 1
     visitor = 1
 
     while open_lst.empty() == False:
         current = open_lst.get()[2]
+        #print("current: ", current.x, current.y)
         if(current == goal):
             totalCost = G_Score[current.x][current.y]
             path = []
@@ -68,18 +95,18 @@ def Astar(bitmapArray: np.ndarray, start, goal, m):
             bitmapArray, row, col, G_Score, current, visited, visitor, m)
 
         for succ in Successor:
+            #print("succ: ", succ.x, succ.y)
             succ_current_cost = G_Score[current.x][current.y] + \
                 current.getDistance(succ, bitmapArray)
             if(succ_current_cost < G_Score[succ.x][succ.y]):
                 G_Score[succ.x][succ.y] = succ_current_cost
-                H_Score = heuristicManhattan(succ, goal, m)
+                H_Score = heuristic(succ, goal, m, index_heuristic)
                 open_lst.put((G_Score[succ.x][succ.y] + H_Score, count, succ))
                 count += 1
                 succ.setNext(current)
 
     print("Cannot find path!")
     return None, None, visitor
-
 
 def start():
 
@@ -90,15 +117,29 @@ def start():
     file = FileHandling("Text/input.txt")
     start, goal, m = file.readData()
 
-    result, cost, point = Astar(arr, start, goal, m)
-    print(cost)
-    print(point)
+    print("index = 1: Manhattan")
+    print("index = 2: Euclid")
+    print("index = 3: dont know")
+    print("index = 4: Custom Manhattan")
+    print("index = 5: Custom Euclid")
+    
+    choice = int(input("Choose: "))
+    
+    prev = time.time()
+    result, distance, totalPoint = Astar(arr, start, goal, m, choice)
+    current = time.time()
+    print("Total distance:" + str(distance))
+    print("Total points: " + str(totalPoint))
+    print("Time cost: " + str(abs(current - prev)))
 
     ## OUTPUT ##
-    file = FileHandling("Text/output.txt")
+    textOutputPath = "Text/output" + str(choice) + ".txt"
+    file = FileHandling(textOutputPath)
     arr = []
-    arr.append(cost)
-    arr.append(point)
+    arr.append(distance)
+    arr.append(totalPoint)
     file.writeData(arr)
 
-    bitmap.changeColorOfPixel("Bitmap/map_update.bmp", result)
+    if result != None:
+        bitmapOutputPath = "Bitmap/map" + str(choice) + ".bmp"
+        bitmap.changeColorOfPixel(bitmapOutputPath, result)
