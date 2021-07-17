@@ -117,11 +117,11 @@ def start():
     file = FileHandling("Text/input.txt")
     start, goal, m = file.readData()
 
-    print("index = 1: Manhattan")
-    print("index = 2: Euclid")
-    print("index = 3: dont know")
-    print("index = 4: Custom Manhattan")
-    print("index = 5: Custom Euclid")
+    print("1: Manhattan")
+    print("2: Euclid")
+    print("3: Unknow")
+    print("4: Custom Manhattan")
+    print("5: Custom Euclid")
     
     choice = int(input("Choose: "))
     
