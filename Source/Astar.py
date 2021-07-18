@@ -80,7 +80,6 @@ def Astar(bitmapArray: np.ndarray, start, goal, m, index_heuristic):
 
     while open_lst.empty() == False:
         current = open_lst.get()[2]
-        #print("current: ", current.x, current.y)
         if(current == goal):
             totalCost = G_Score[current.x][current.y]
             path = []
@@ -95,7 +94,6 @@ def Astar(bitmapArray: np.ndarray, start, goal, m, index_heuristic):
             bitmapArray, row, col, G_Score, current, visited, visitor, m)
 
         for succ in Successor:
-            #print("succ: ", succ.x, succ.y)
             succ_current_cost = G_Score[current.x][current.y] + \
                 current.getDistance(succ, bitmapArray)
             if(succ_current_cost < G_Score[succ.x][succ.y]):
