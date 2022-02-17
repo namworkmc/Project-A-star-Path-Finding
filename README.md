@@ -36,7 +36,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/namworkmc/Project-A-star-Path-Finding">
-    <img src="images/logo.png" alt="Logo">
+    <img src="images/logo.png" alt="Logo" style="max-width: 25%;">
   </a>
 
   <h3 align="center">AI Project | A* Path Finding</h3>
