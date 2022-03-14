@@ -70,18 +70,16 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#idea">Idea</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## Mô tả
+<a id="about-the-project"></a>
+## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -94,7 +92,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 
 
 
-
+<a id="built-with"></a>
 ### Built With
 
 Được viết bằng Python 3.7.8 64-bit, sử dụng các thư viện sau:
@@ -104,10 +102,12 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 * [Pillow](https://pillow.readthedocs.io/en/stable/)
 
 <!-- GETTING STARTED -->
+<a id="getting-started"></a>
 ## Getting Started
 
 Đầu tiên cần phải cài Python để sử dụng được Source. Để cài Python vui lòng truy cập [trang chính thông](https://www.python.org/downloads/) của để tải về. 
 
+<a id="prerequisites"></a>
 ### Prerequisites
 
 * pip
@@ -116,7 +116,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
   SymPy: pip install sympy
   Pillow: pip install pillow
   ```
-
+<a id="installation"></a>
 ### Installation
 
 1. Clone the repo
@@ -132,6 +132,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 3. Sử dụng Visual Studio Code chạy file Main.py để chạy Source
 
 <!-- USAGE EXAMPLES -->
+<a id="usage"></a>
 ## Usage
 1. Python version <br />
 ![img.png](images/s1.png)
@@ -143,6 +144,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 
 
 <!-- IDEA -->
+<a id="idea"></a>
 ## Ý tưởng của thuật toán và 3 hàm Heuristic tự sáng tạo
 
 ### Ý tưởng thuật toán
@@ -188,7 +190,12 @@ tích hình Elip làm hàm heuristic. Tuy nhiên để tính diện tích hình 
 tạp thay vào đó nhóm sử dụng công thức tính diện tích tương đối giống với Elip là hình tròn:<br>
 ![img.png](img.png)
 
+<!-- MORE -->   
+## Xem thêm report để biết thêm chi tiết
+https://github.com/namworkmc/Project-A-star-Path-Finding/tree/main/Report
+
 <!-- CONTACT -->
+<a id="contact"></a>
 ## Contact
 
 Nguyễn Đức Nam - [@Facebook](https://www.facebook.com/DucNamHCMUS) - namworkmc@gmail.com<br>
@@ -197,7 +204,6 @@ Lê Ngọc Minh Nhật - [@Facebook](https://www.facebook.com/profile.php?id=100
 Project Link: [https://github.com/namworkmc/Project-A-star-Path-Finding](https://github.com/namworkmc/Project-A-star-Path-Finding)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
