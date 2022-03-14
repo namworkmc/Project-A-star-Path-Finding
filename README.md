@@ -171,24 +171,24 @@ nhật lại g(n) của **_successor_** = **cost**, tính h(n) theo công thức
 ### Ý tưởng của 3 hàm Heuristic
 1. CustomManhattan
 Dựa trên ý tưởng khoảng cách Manhattan, công thức: <br>
-   ![img_3.png](img_3.png)<br>
+   ![img_3.png](images/img_3.png)<br>
 Nhóm đã cộng thêm một tham số 𝑘 = |𝑚 − 𝐷(𝑎1, 𝑎2)| (trong đó m là hằng số để kiểm tra độ chênh lệch độ cao),
 sau đó cho 𝑘 = 𝑘 + 1 đến khi 𝑘 là một số nguyên tố. Sau đó ta có được hàm Heuristic:<br>
-![img_4.png](img_4.png)<br>
+![img_4.png](images/img_4.png)<br>
    
 2. CustomEuclid
 Tương tự như CustomManhattan, nhóm cũng dựa trên ý tưởng khoảng cách Euclid với công thức:<br>
-![img_1.png](img_1.png)<br>
+![img_1.png](images/img_1.png)<br>
 Nhóm đã cộng thêm một tham số 𝑘 = |𝑚 − 𝐷(𝑎1, 𝑎2)| (trong đó m là hằng số để kiểm tra độ chênh lệch độ cao),
 sau đó cho 𝑘 = 𝑘 + 1 đến khi 𝑘 là một số nguyên tố. Sau đó ta có được hàm Heuristic:<br>
-![img_2.png](img_2.png)
+![img_2.png](images/img_2.png)
 
 
 3. Circle Area
 Thuật toán A* khi expand node về phía goal theo hình Elip nên ý tưởng diện
 tích hình Elip làm hàm heuristic. Tuy nhiên để tính diện tích hình Elip sẽ khá phức
 tạp thay vào đó nhóm sử dụng công thức tính diện tích tương đối giống với Elip là hình tròn:<br>
-![img.png](img.png)
+![img.png](images/img.png)
 
 <!-- MORE -->   
 ## Xem thêm report để biết thêm chi tiết
