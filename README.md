@@ -95,7 +95,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 
 
 
-### Được viết bằng
+### Built With
 
 Được viết bằng Python 3.7.8 64-bit, sử dụng các thư viện sau:
 
@@ -104,11 +104,11 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 * [Pillow](https://pillow.readthedocs.io/en/stable/)
 
 <!-- GETTING STARTED -->
-## Bắt đầu
+## Getting Started
 
 Đầu tiên cần phải cài Python để sử dụng được Source. Để cài Python vui lòng truy cập [trang chính thông](https://www.python.org/downloads/) của để tải về. 
 
-### Cài đặt các thư viện cần thiết
+### Prerequisites
 
 * pip
   ```sh
@@ -117,7 +117,7 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
   Pillow: pip install pillow
   ```
 
-### Cài đặt
+### Installation
 
 1. Clone the repo
    ```sh
@@ -145,44 +145,58 @@ Mỗi pixel của hình tương ứng với một toạ độ (x, y). Độ cao 
 <!-- IDEA -->
 ## Ý tưởng của thuật toán và 3 hàm Heuristic tự sáng tạo
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+### Ý tưởng thuật toán
+**_open_list_** là một Priority Queue (**_PQ_**) để lưu lại các toạ độ (node) đã đi qua và dùng để mở rộng (expand)
+đường đi (các node chưa duyệt). Sử dụng giá trị Priority: f(n) = g(n) + h(n) (trị số **_P_**).
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+**_G_Score_** là một ma trận có kích thước với với ảnh đầu vào, giá trị khởi tạo của từng phần tử của ma
+trận là **infinity** (đại diện cho node chưa duyệt qua), dùng để lưu giá trị g(n) của từng toạ độ.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+**_Path_** là tập đường đi.
+
+**_Thuật toán:_**<br>
+Khởi tạo **_open_list_**, **_G_Score_**, **_Path_**
+
+Khởi tạo vị trí bắt đầu (**start**) và cho vào **_G_Score_** với giá trị là **0**. Thêm **start** vào **_open_list_**
+với trị số **_P_**. Bước tiếp theo, lấy phần tử có trị số **_P_** nhỏ nhất ra khỏi **_PQ_** gọi là current, 
+so sánh với vị trí kết thúc (**goal**), nếu trùng khớp kết thúc thuật toán. 
+Ngược lại, tạo list **_successor_** lưu lại toạ độ các điểm lân cận có thể đi qua.
+Duyệt từng phần của tập **_successor_**, kiểm tra **cost** của **_successor_** bằng cách lấy g(n) của current
+cộng với khoảng cách giữa **_successor_** đang xét và currentl. Nếu **cost** thấp hơn g(n) của **_successor_**, cập
+nhật lại g(n) của **_successor_** = **cost**, tính h(n) theo công thức Heuristic đề xuất, thêm **_successor_** vào
+**_open_list_** với trị số **_P_** = g(n) + h(n) của **_successor_**. Thực hiện lại các bước cho đến khi **_open_list_** rỗng.
+
+### Ý tưởng của 3 hàm Heuristic
+1. CustomManhattan
+Dựa trên ý tưởng khoảng cách Manhattan, công thức: <br>
+   ![img_3.png](img_3.png)<br>
+Nhóm đã cộng thêm một tham số 𝑘 = |𝑚 − 𝐷(𝑎1, 𝑎2)| (trong đó m là hằng số để kiểm tra độ chênh lệch độ cao),
+sau đó cho 𝑘 = 𝑘 + 1 đến khi 𝑘 là một số nguyên tố. Sau đó ta có được hàm Heuristic:<br>
+![img_4.png](img_4.png)<br>
+   
+2. CustomEuclid
+Tương tự như CustomManhattan, nhóm cũng dựa trên ý tưởng khoảng cách Euclid với công thức:<br>
+![img_1.png](img_1.png)<br>
+Nhóm đã cộng thêm một tham số 𝑘 = |𝑚 − 𝐷(𝑎1, 𝑎2)| (trong đó m là hằng số để kiểm tra độ chênh lệch độ cao),
+sau đó cho 𝑘 = 𝑘 + 1 đến khi 𝑘 là một số nguyên tố. Sau đó ta có được hàm Heuristic:<br>
+![img_2.png](img_2.png)
+
+
+3. Circle Area
+Thuật toán A* khi expand node về phía goal theo hình Elip nên ý tưởng diện
+tích hình Elip làm hàm heuristic. Tuy nhiên để tính diện tích hình Elip sẽ khá phức
+tạp thay vào đó nhóm sử dụng công thức tính diện tích tương đối giống với Elip là hình tròn:<br>
+![img.png](img.png)
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Nguyễn Đức Nam - [@Facebook](https://www.facebook.com/DucNamHCMUS) - namworkmc@gmail.com<br>
+Lê Ngọc Minh Nhật - [@Facebook](https://www.facebook.com/profile.php?id=100050103259038) - 19127@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Project Link: [https://github.com/namworkmc/Project-A-star-Path-Finding](https://github.com/namworkmc/Project-A-star-Path-Finding)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
