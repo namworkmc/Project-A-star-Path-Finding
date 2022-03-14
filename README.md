@@ -199,7 +199,7 @@ https://github.com/namworkmc/Project-A-star-Path-Finding/tree/main/Report
 ## Contact
 
 Nguyễn Đức Nam - [@Facebook](https://www.facebook.com/DucNamHCMUS) - namworkmc@gmail.com<br>
-Lê Ngọc Minh Nhật - [@Facebook](https://www.facebook.com/profile.php?id=100050103259038) - 19127@gmail.com
+Lê Ngọc Minh Nhật - [@Facebook](https://www.facebook.com/profile.php?id=100050103259038) - lengocminhnhatntp@gmail.com
 
 Project Link: [https://github.com/namworkmc/Project-A-star-Path-Finding](https://github.com/namworkmc/Project-A-star-Path-Finding)
 
